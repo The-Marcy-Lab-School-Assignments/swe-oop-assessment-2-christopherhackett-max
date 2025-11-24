@@ -17,9 +17,44 @@ In your own words, explain what does _encapsulation_ refer to? Why is this conce
 
 Provide a code snippet to illustrate _encapsulation_.
 
-## Response 2
+## Response 1
 
----
+**Encapsulation** is the grouping of data and methods that handle that data into one object. **Encapsulation** is useful when needing to seperate different features or the functionality of your project.
+
+```js
+class MenuList {
+  #menu;
+  constructor() {
+    this.#menu = []
+  }
+  addItem(name, price) {
+    const newItem = {name, price}
+    this.#menu.push(newItem)
+  }
+  removeItem(name, amount) {
+    this.#menu.forEach((item) => callback)
+  }
+  viewList() {
+    return [...this.#menu]
+  }
+}
+
+//different file
+
+class Staff {
+  constructor(name, role) {
+    this.name = name
+    this.role = role
+  }
+  CompleteTask(task) {
+    console.log(`${this.name} has completed ${task}!`)
+  }
+  onBreak() {
+    console.log(`${this.name} is on break!`)
+  }
+}
+```
+``MenuList``, ``Staff``, and their **properites/methods** are completely separated. This makes your code easier to read, debug, and test.
 
 ## Question 2
 
@@ -52,7 +87,7 @@ console.log(counterB.count);
 
 ## Response 2
 
----
+The ``this`` keyword refers to the **object** that ``this`` is being invoked on. ``this`` is useful because it gives **functions** and **methods** the ability to access the **properties** and methods of the object that ``this`` refers to. In this snippet, ``this`` refers to the count property of the ``Counter`` class.
 
 ## Question 3
 
@@ -60,8 +95,33 @@ In your own words, explain what **polymorphism** means in OOP. Provide an exampl
 
 ## Response 3
 
----
+**Polymorphism** is when different objects can be handled the same because they have the same method names.
 
+```js
+class Dog {
+  constructor(name, breed, age
+    this.name = name,
+    this.breed = breed,
+    this.age = age,
+  );
+  speak() {
+    console.log('woof!')
+  }
+}
+
+class Cat {
+  constructor(name, breed, age) {
+    this.name = name
+    this.breed = breed
+    this.age = age
+  }
+  speak() {
+    console.log('meow!')
+  }
+}
+```
+
+``speak()`` can be invoked on instances of both ``Cat`` and ``Dog``, even though they are different classes, and the method for each returns something different, because ``speak()`` has the same name for both classes.
 ## Question 4
 
 You're building a game where players can raise different digital pets: Cats, Dogs, and Birds. All pets have have a `name`, `energy` level, and `happiness` level and can all `sleep`. Cats have the ability to `hunt`, dogs have the ability to `chase`, and birds have the ability to `fly`.
@@ -71,3 +131,10 @@ You're building a game where players can raise different digital pets: Cats, Dog
 **Part B:** Explain one advantage of using inheritance here instead of creating three completely separate classes.
 
 ## Response 4
+
+### Part A:
+First, I would create a ``Pet`` class with **properties** for ``name``, ``energy``, and ``happiness``, and a **method** for ``sleep``. Cats, Dogs, and Birds would then be **subclasses** of Pet, **inheriting** those properties and the sleep method. Cats would then have a ``hunt`` method, Dogs would have a ``chase`` method, and birds would have a ``fly`` method.
+
+### Part B:
+
+One advantage of using inheritance in this situation is **code reusability**. Cats, Dogs, and Birds inherit all their properties and the sleep method from the Pet class. Reusing that code saves you from having to write it repeatedly. As well as keeping your code clean.
